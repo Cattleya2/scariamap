@@ -24,14 +24,14 @@ const MapPlaceholder = () => {
   );
 };
 
-const customIcon = new Icon({ iconUrl: "", iconSize: [50, 50] });
+/* const customIcon = new Icon({ iconUrl: "", iconSize: [50, 50] });
 const createClusterCustomIcon = (cluster) => {
   return new divIcon({
     html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
     className: "custom-marker-cluster",
     iconSize: point(33, 33, true),
   });
-};
+}; */
 
 const MyMap = ({ data }) => {
   const mapCenter = [6.3669, 2.4247];
