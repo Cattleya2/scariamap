@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import MyMap from '../myMap/MyMap';
+import React, { useState, useEffect } from "react";
+import MyMap from "../myMap/MyMap";
 
 function MyData() {
   const [dataAPI, setDataAPI] = useState(null);
@@ -12,20 +12,15 @@ function MyData() {
       const data = await reponseAPI.json();
       setDataAPI(data);
     };
-    
+
     fetchData();
   }, []);
-  
+
   return (
     <div>
-      {dataAPI ? (
-        <MyMap data={dataAPI} />
-      ) : (
-        <p>Chargement des données...</p>
-      )}
+      {dataAPI ? <MyMap data={dataAPI} /> : <p>Chargement des données...</p>}
     </div>
   );
 }
 
 export default MyData;
-

@@ -1,10 +1,7 @@
-import MyData from "./components/dataParse/MyData";
+import MyData from "./components/myData/MyData";
+
 function App() {
-  return (
-    <>
-      <MyData />
-    </>
-  );
+  return <MyData />;
 }
 
 export default App;
