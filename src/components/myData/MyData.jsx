@@ -2,23 +2,38 @@ import React, { useState, useEffect } from "react";
 import MyMap from "../myMap/MyMap";
 
 function MyData() {
-  const [dataAPI, setDataAPI] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [records, setRecords] = useState([]);
+
   const url =
     "https://opensheet.elk.sh/1PnOhL_PM_Q5RRdREONf2I0Ni-OKBUj9nijPQzOkruhw/DataBrute";
-
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    setLoading(true);
+    try {
       const reponseAPI = await fetch(url);
       const data = await reponseAPI.json();
-      setDataAPI(data);
-    };
+      if (data) {
+        setRecords(data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    setLoading(false);
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div>
-      {dataAPI ? <MyMap data={dataAPI} /> : <p>Chargement des données...</p>}
+      {loading ? (
+        <div className="w-full text-center ">
+          <p className="text-3xl">Chargement des données...</p>
+        </div>
+      ) : (
+        records && <MyMap data={records} />
+      )}
     </div>
   );
 }
