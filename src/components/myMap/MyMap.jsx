@@ -10,7 +10,7 @@ import {
   AttributionControl,
   ScaleControl,
 } from "react-leaflet";
-import { Icon, divIcon, point } from "leaflet";
+// import { Icon, divIcon, point } from "leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import "leaflet/dist/leaflet.css";
 import "./style.css";
@@ -18,7 +18,7 @@ import "./style.css";
 const MapPlaceholder = () => {
   return (
     <p className="text-3xl">
-      Carte Scaria{" "}
+      Carte Scaria
       <noscript>Vous devez activer JavaScript pour voir cette carte.</noscript>
     </p>
   );
@@ -36,7 +36,7 @@ const createClusterCustomIcon = (cluster) => {
 const MyMap = ({ data }) => {
   const mapCenter = [6.3669, 2.4247];
   const zoomLevel = 12;
-  //console.log(data);
+  // console.log(data);
   return (
     <>
       <div className="leaflet-container rounded-lg">
@@ -64,7 +64,11 @@ const MyMap = ({ data }) => {
                         elmt._localisation_longitude,
                       ]}
                     >
-                      <Popup></Popup>
+                      <Popup>
+                        Adhésion : {elmt.Adhesion} <br />
+                        Origine : {elmt.Origine} <br />
+                        Dégats : {elmt.Degets_causes}
+                      </Popup>
                       <Tooltip>{elmt._index}</Tooltip>
                     </Marker>
                     //console.log(elmt)
